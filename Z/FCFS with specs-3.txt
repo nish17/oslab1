@@ -1,0 +1,46 @@
+#include<iostream>
+#include<stdio.h>
+#include<vector>
+#include<algorithm>
+using namespace std;
+bool sortcol( const vector<int>& v1,
+               const vector<int>& v2 ) {
+ return v1[1] < v2[1];
+}
+int main()
+{
+
+    vector< vector <int> > Process;
+
+    int n,bt,at,i,j;
+    cout<<"Enter number of process: ";
+    cin>>n;
+
+    for(i=1;i<=n;i++)
+    {
+        vector<int> row;
+        cout<<"Enter burst time for process "<<i<<" : ";
+        cin>>bt;
+        row.push_back(bt);
+        cout<<"Enter arrival time for process "<<i<<" : ";
+        cin>>at;
+        row.push_back(at);
+        row.push_back(i);
+        Process.push_back(row);
+    }
+    cout<<endl;
+    sort(Process.begin(), Process.end(),sortcol);
+    //cout<<"Process id\tArrival time\tBurst time";
+    for (i=0;i<n;i++) 
+    {
+            for (j=2;j>=0;j--)
+        {
+
+                    cout << Process[i][j] << "\t";
+        }
+        cout << endl;
+    }
+        
+
+return 0;
+}
